@@ -3,8 +3,10 @@ import { Image } from 'astro:assets';
 import '../styles/global.css';
 
 import studentImage from '../images/happy-student.png';
+import studyingImage from '../images/studying-background.jpg';
 
 import AtomSvg from '../components/AtomSvg.astro';
+import Heading from '../components/Heading.astro';
 
 ---
 
@@ -20,8 +22,10 @@ import AtomSvg from '../components/AtomSvg.astro';
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
-  <body class="font-sans text-center">
+  <body class="bg-green-50 font-sans text-center">
 	<header class="h-svh relative bg-green-800 text-white pt-[4svh] flex flex-col justify-between items-center">
+		
+		<!-- Logo -->
 		<div class="flex items-center justify-center gap-1">
 			<AtomSvg />
 			<div class="font-['Montserrat'] text-4xl flex">
@@ -30,8 +34,8 @@ import AtomSvg from '../components/AtomSvg.astro';
 			</div>
 		</div>
 		<h1 class="text-[6svh] leading-[initial] font-bold max-w-[700px] mx-10">How to <span class="italic">really</span> <span class="text-[#0f0]">ace</span> your GCSEs and <span class="whitespace-nowrap">A-Levels</span></h1>
-
-		<div>
+		<!-- Scroll down icon -->
+		<button aria-label="Scroll down" onclick="window.scrollTo({ top: document.querySelector('main').offsetTop, behavior: 'smooth' })" class="cursor-pointer">
 			<svg aria-label="Swipe down" width="auto" height="5svh" viewBox="0 0 44 80" xmlns="http://www.w3.org/2000/svg">
 				<!-- Mouse outline -->
 				<rect x="2" y="2" width="40" height="76" rx="20" ry="20" fill="none" stroke="currentColor" stroke-width="2" />
@@ -56,9 +60,8 @@ import AtomSvg from '../components/AtomSvg.astro';
 					/>
 				</circle>
 			</svg>
-
-		</div>
-
+		</button>
+		<!-- Student image -->
 		<div class="h-[50svh] max-h-[720px] w-full flex justify-center items-end">
 			<Image
 				src={studentImage}
@@ -66,9 +69,30 @@ import AtomSvg from '../components/AtomSvg.astro';
 				class="w-auto h-full object-cover"
 			/>
 		</div>
-
-		
 	</header>
-	<div class="h-6"></div>
+
+	<main>
+		<section
+			class="p-5 lg:p-20 relative"
+		>
+			<Image
+				src={studyingImage}
+				alt="Student studying"
+				class="w-full h-full object-cover object-[40%_50%] absolute inset-0 -z-10"
+			/>
+
+			<div class="bg-green-50 p-10 max-w-2xl mx-auto lg:mr-0 border-[#9ec2aa] border shadow-md">
+				<Heading>The best kept secret in exam preparation</Heading>
+				<p>
+					Every GCSE and A-Level subject has an official specification from the exam board: this is the exact list of what you need to know for your exams. Its content is usually much less than your hefty textbook suggests, which often includes extra detail that goes beyond what's actually required. Make the specification the core of your studies. As the year goes on, check regularly that you're covering everything on it, and avoid wasting time learning more than you need to. You might also realise just how much of the content is straightforward theory you can memorise and reuse directly in the exam — removing limits on the grades you can achieve.
+				</p>
+			</div>
+		</section>
+
+		<section>
+			<Heading><span class="text-[#0f0] font-bold">DOs</span> and <span class="text-red-600 font-bold">DON'Ts</span> for exam success</Heading>
+		</section>
+	</main>
+
   </body>
 </html>

@@ -1,4 +1,8 @@
-<svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+---
+const diameter: number = Astro.props.diameter || 50;
+---
+
+<svg width={diameter} height={diameter} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <!-- Unified left-to-right gradient -->
     <linearGradient id="gradient" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
