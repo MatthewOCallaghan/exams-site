@@ -4,6 +4,13 @@ import '../styles/global.css';
 
 import studentImage from '../images/happy-student.png';
 import studyingImage from '../images/studying-background.jpg';
+import prototypeImage from '../images/prototype.png';
+
+import bookIcon from '../images/icons/book.svg?raw';
+import brainIcon from '../images/icons/brain.svg?raw';
+import checklistIcon from '../images/icons/checklist.svg?raw';
+import filesIcon from '../images/icons/files.svg?raw';
+import userIcon from '../images/icons/user.svg?raw';
 
 import AtomSvg from '../components/AtomSvg.astro';
 import Heading from '../components/Heading.astro';
@@ -22,8 +29,8 @@ import Heading from '../components/Heading.astro';
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-green-50 font-sans text-center">
-	<header class="h-svh relative bg-green-800 text-white pt-[4svh] flex flex-col justify-between items-center">
+  <body class="bg-green-50 font-sans">
+	<header class="h-svh relative bg-green-800 text-white pt-[4svh] flex flex-col justify-between items-center text-center">
 		
 		<!-- Logo -->
 		<div class="flex items-center justify-center gap-1">
@@ -81,18 +88,89 @@ import Heading from '../components/Heading.astro';
 				class="w-full h-full object-cover object-[40%_50%] absolute inset-0 -z-10"
 			/>
 
-			<div class="bg-green-50 p-10 max-w-2xl mx-auto lg:mr-0 border-[#9ec2aa] border shadow-md">
-				<Heading>The best kept secret in exam preparation</Heading>
+			<div class="p-10 max-w-2xl mx-auto lg:mr-0 bg-[#ffffff80] rounded-2xl border-[#ffffff4d] border shadow-[0_4px_30px_#0000001a] backdrop-blur-sm text-center">
+				<Heading>The best kept <span class="italic">secret</span> in exam preparation</Heading>
 				<p>
-					Every GCSE and A-Level subject has an official specification from the exam board: this is the exact list of what you need to know for your exams. Its content is usually much less than your hefty textbook suggests, which often includes extra detail that goes beyond what's actually required. Make the specification the core of your studies. As the year goes on, check regularly that you're covering everything on it, and avoid wasting time learning more than you need to. You might also realise just how much of the content is straightforward theory you can memorise and reuse directly in the exam — removing limits on the grades you can achieve.
+					Every GCSE and A-Level subject has an official specification from the exam board: this is the exact list of what you need to know for your exams. Its content is usually much less than your hefty textbook suggests, which often includes extra detail that goes beyond what's actually required. Make the specification the core of your studies. As the year goes on, check regularly that you're covering everything on it, and avoid wasting time learning more than you need to. You might also realise just how much of the content is theory you can memorise and reuse directly in the exam — removing limits on the grades you can achieve.
 				</p>
 			</div>
 		</section>
 
-		<section>
-			<Heading><span class="text-[#0f0] font-bold">DOs</span> and <span class="text-red-600 font-bold">DON'Ts</span> for exam success</Heading>
+		<section class="p-7 lg:p-20 text-center">
+			<Heading><span class="text-[#0f0] font-bold">Top tips</span> for exam success</Heading>
+
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto text-left lg:mt-10">
+				{
+					[
+						{
+							title: 'Use the <span class="italic">specification</span>',
+							description: 'Keep the specification at the heart of your studies. Know exactly what you\'re expected to learn - nothing more, nothing less.',
+							icon: checklistIcon
+						},
+						{
+							title: '<span class="italic">Memorise</span> content',
+							description: 'Exams often test theory content like keyword definitions, process steps, and key lists. Wherever possible, memorise these so you can recall them word-for-word. This low-risk strategy builds confidence, improves speed, reduces pressure on the day, and makes top grades more achievable.',
+							icon: brainIcon
+						},
+						{
+							title: 'Use <span class="italic">past papers</span>',
+							description: 'Work through past papers and study their mark schemes. Notice how closely the questions match the wording of the specification? When memorising answers, use phrases from the mark schemes — after all, what\'s more reliable than giving examiners their own words back?',
+							icon: filesIcon
+						},
+						
+						{
+							title: 'Take <span class="italic">control</span>',
+							description: 'Your grades matter more to you than anyone else. It\'s great you\'re surrounded by teachers, family and friends to support you, but take responsbility for ensuring you know exactly what you need to for your exams.',
+							icon: userIcon
+						},
+						{
+							title: 'Use textbooks <span class="italic">wisely</span>',
+							description: 'Textbooks are useful, but they often go beyond what\'s needed for the exam. Just consider how much detail they give per topic compared to the limited space you have in the exam to write your answers. Use them to look up specific points from the specification or to deepen your understanding — not as your main guide to the course.',
+							icon: bookIcon
+						}
+					].map(({ title, description, icon }) => (
+						<article class="w-full flex gap-4">
+							<div class="w-15 h-15 min-w-15">
+								<Fragment set:html={icon} />
+							</div>
+							<div class="pt-2">
+								<h3 class="text-xl font-bold"><Fragment set:html={title} /></h3>
+								<p>{description}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</section>
+
+		<section class="bg-green-800 p-10 lg:p-20 flex flex-wrap gap-7 justify-center items-center">
+			<div class="w-full max-w-xs lg:max-w-md">
+				<Image
+					src={prototypeImage}
+					alt="Atomic Exams prototype showing past paper questions for AQA AS Computer Science Paper 2"
+					class="w-full h-auto"
+				/>
+			</div>
+			<div class="max-w-xl text-white">
+				<Heading justify="start">Our prototype</Heading>
+				<p>We're building a web and mobile app to help students prepare for their exams using the strategic, specification-driven approach outlined above. The app will guide students through exactly what they need to know — clearly, efficiently, and with a strong focus on memorisation.</p>
+				<p class="mt-2">As a first step, we've developed a prototype for AQA AS Computer Science Paper 2. It maps past paper questions directly to the relevant points in the specification, helping students see exactly how their knowledge will be tested.</p>
+				<a href="https://exams-app-omega.vercel.app/" target="_blank" class="inline-block bg-green-200 text-green-800 px-4 py-2 rounded-lg mt-4 hover:bg-green-300 transition-colors">
+					Try the prototype
+				</a>
+			</div>
 		</section>
 	</main>
+
+	<footer class="bg-gray-950 text-white p-5 flex flex-wrap gap-x-20 gap-y-5 justify-center lg:justify-between">
+		<a href="mailto:hello@atomicexams.co.uk" class="block">
+			Get in touch at hello@atomicexams.co.uk.
+		</a>
+
+		<p class="text-sm">
+			&copy; 2025 Atomic Exams. All rights reserved.
+		</p>
+	</footer>
 
   </body>
 </html>

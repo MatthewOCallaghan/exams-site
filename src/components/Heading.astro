@@ -1,8 +1,10 @@
 ---
 import AtomSvg from "./AtomSvg.astro"
+
+const justify: string = Astro.props?.justify || "center";
 ---
 
-<div class="flex items-center justify-center flex-wrap gap-4 mb-7">
+<div class={`flex items-center justify-${justify} flex-wrap gap-4 mb-7`}>
     <AtomSvg diameter={40} />
     <h2 class="font-['Montserrat'] text-3xl">
         <slot />
