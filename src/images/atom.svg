@@ -1,0 +1,28 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Unified left-to-right gradient -->
+    <linearGradient id="gradient" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00b4d8"/>
+      <stop offset="100%" stop-color="#00e707"/>
+    </linearGradient>
+
+    <!-- Atom shape mask -->
+    <mask id="atomMask">
+      <rect width="200" height="200" fill="black" />
+      <g stroke="white" stroke-width="7" fill="white">
+        <!-- Smaller central core -->
+        <circle cx="100" cy="100" r="6" />
+
+        <!-- One vertical ring -->
+        <ellipse cx="100" cy="100" rx="50" ry="22" transform="rotate(90 100 100)" fill="none" />
+
+        <!-- Other two rings (symmetric) -->
+        <ellipse cx="100" cy="100" rx="50" ry="22" transform="rotate(30 100 100)" fill="none" />
+        <ellipse cx="100" cy="100" rx="50" ry="22" transform="rotate(150 100 100)" fill="none" />
+      </g>
+    </mask>
+  </defs>
+
+  <!-- Apply gradient only where masked -->
+  <rect width="200" height="200" fill="url(#gradient)" mask="url(#atomMask)" />
+</svg>

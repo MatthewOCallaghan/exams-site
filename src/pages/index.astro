@@ -1,16 +1,74 @@
 ---
+import { Image } from 'astro:assets';
+import '../styles/global.css';
+
+import studentImage from '../images/happy-student.png';
+
+import AtomSvg from '../components/AtomSvg.astro';
 
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>How to ace your GCSEs and A-Levels | Atomic Exams</title>
+
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+  <body class="font-sans text-center">
+	<header class="h-svh relative bg-green-800 text-white pt-[4svh] flex flex-col justify-between items-center">
+		<div class="flex items-center justify-center gap-1">
+			<AtomSvg />
+			<div class="font-['Montserrat'] text-4xl flex">
+				<span class="text-white font-light">Atomic</span>
+				<span class="font-extrabold text-green-200">Exams</span>
+			</div>
+		</div>
+		<h1 class="text-[6svh] leading-[initial] font-bold max-w-[700px] mx-10">How to <span class="italic">really</span> <span class="text-[#0f0]">ace</span> your GCSEs and <span class="whitespace-nowrap">A-Levels</span></h1>
+
+		<div>
+			<svg aria-label="Swipe down" width="auto" height="5svh" viewBox="0 0 44 80" xmlns="http://www.w3.org/2000/svg">
+				<!-- Mouse outline -->
+				<rect x="2" y="2" width="40" height="76" rx="20" ry="20" fill="none" stroke="currentColor" stroke-width="2" />
+
+				<!-- Scrolling dot -->
+				<circle cx="22" cy="30" r="3" fill="currentColor">
+					<animate 
+						attributeName="cy" 
+						values="28;25;57;54;57" 
+						keyTimes="0;0.1;0.6;0.75;1" 
+						dur="1.5s" 
+						repeatCount="indefinite" 
+						calcMode="spline" 
+						keySplines="0.25 0.1 0.25 1; 0.42 0 0.58 1; 0.42 0 0.58 1; 0.25 0.1 0.25 1" 
+					/>
+					<animate 
+						attributeName="opacity" 
+						values="0;1;1;0" 
+						keyTimes="0;0.1;0.75;1" 
+						dur="1.5s" 
+						repeatCount="indefinite" 
+					/>
+				</circle>
+			</svg>
+
+		</div>
+
+		<div class="h-[50svh] max-h-[720px] w-full flex justify-center items-end">
+			<Image
+				src={studentImage}
+				alt="Student happy after receiving exam results"
+				class="w-auto h-full object-cover"
+			/>
+		</div>
+
+		
+	</header>
+	<div class="h-6"></div>
+  </body>
 </html>
